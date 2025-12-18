@@ -1,0 +1,12 @@
+if __name__ == '__main__':
+    # Read the integer n from STDIN
+    try:
+        n = int(input().strip())
+        
+        # Iterate from 0 to n-1
+        for i in range(n):
+            # Calculate square and print
+            print(i**2)
+            
+    except EOFError:
+        pass
