@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main() 
+{
+int T;
+    if (scanf("%d", &T) != 1) return 0;
+    while (T--)
+    {
+        int X, Y;
+        if (scanf("%d %d", &X, &Y) == 2)
+        {
+            if ((X + Y) > 6)
+            {
+                printf("YES\n");
+            } else
+            {
+                printf("NO\n");
+            }
+        }
+    }
+
+    return 0;
+}
