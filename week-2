@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    int T;
+    // Read the number of test cases
+    if (scanf("%d", &T) != 1) return 0;
+
+    while (T--) {
+        int X, Y;
+        // Read X (earnings) and Y (tax threshold)
+        if (scanf("%d %d", &X, &Y) == 2) {
+            // The minimum investment is the amount earned over the limit
+            int minimum_investment = X - Y;
+            printf("%d\n", minimum_investment);
+        }
+    }
+
+    return 0;
+}
