@@ -1,0 +1,18 @@
+int n, sum = 0;
+    int i = 2; // Start at the first even number
+
+    // Get input from user
+    if (scanf("%d", &n) != 1) {
+        return 0;
+    }
+
+    // Iterate through even numbers using a while loop
+    while (i <= n) {
+        sum += i;  // Add current even number to sum
+        i += 2;    // Move to the next even number
+    }
+
+    // Output the result
+    printf("%d\n", sum);
+
+    return 0;
