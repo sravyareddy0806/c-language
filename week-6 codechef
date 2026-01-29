@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Helper function to sort integers
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+void solve() {
+    int n, k;
+    scanf("%d %d", &n, &k);
+
+    int motu[5005], tomu[5005]; // Max size is N/2
+    int m_idx = 0, t_idx = 0;
+
+    for (int i = 0; i < n; i++) {
+        int val;
+        scanf("%d", &val);
+        if (i % 2 == 0) motu[m_idx++] = val;
+        else tomu[t_idx++] = val;
+    }
+
+    // Sort Motu's values ascending (lowest to highest)
+    qsort(motu, m_idx, sizeof(int), compare);
+    // Sort Tomu's values ascending (lowest to highest)
+    qsort(tomu, t_idx, sizeof(int), compare);
+
+    // Swap Motu's largest with Tomu's smallest
+    // We start from the end of Motu's array and start of Tomu's array
+    int m_ptr = m_idx - 1;
+    int t_ptr = 0;
+    while (k > 0 && m_ptr >= 0 && t_ptr < t_idx) {
+        if (motu[m_ptr] > tomu[t_ptr]) {
+            int temp = motu[m_ptr];
+            motu[m_ptr] = tomu[t_ptr];
+            tomu[t_ptr] = temp;
+            k--; m_ptr--; t_ptr++;
+        } else {
+            break; // No more beneficial swaps
+        }
+    }
+
+    long motu_sum = 0, tomu_sum = 0;
+    for (int i = 0; i < m_idx; i++) motu_sum += motu[i];
+    for (int i = 0; i < t_idx; i++) tomu_sum += tomu[i];
+
+    if (tomu_sum > motu_sum) printf("YES\n");
+    else printf("NO\n");
+}
+
+int main() {
+    int t;
+    scanf("%d", &t);
+    while (t--) solve();
+    return 0;
+}
