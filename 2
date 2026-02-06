@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        int X, N;
+        scanf("%d %d", &X, &N);
+
+        // Minimum planes needed to carry N passengers
+        int planes_needed = (N + 99) / 100;
+
+        // Planes to buy = max(0, planes_needed - X)
+        int extra_planes = planes_needed - X;
+        if (extra_planes < 0) extra_planes = 0;
+
+        printf("%d\n", extra_planes);
+    }
+
+    return 0;
+}
